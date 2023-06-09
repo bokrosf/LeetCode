@@ -18,7 +18,6 @@ public:
 
         for (auto c : s)
         {
-            std::cout << "row index = " << row << std::endl;
             row_texts[row] += c;
             
             if (row + row_offset < 0 || row + row_offset == row_count)
