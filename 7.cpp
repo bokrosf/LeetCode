@@ -9,13 +9,6 @@ class Solution
 public:
     int reverse(int x)
     {
-        // - Kezdetben 0 lesz a szám.
-        // - Amíg 0-nál nagyobb a szám, addig
-        //  - Meg kell szorozni 10-zel
-        //  - Le kell kérdezni az utolsó számjegyet. Maradékosan el kell osztani 10-zel, így megkapható az utolsó számjegy.
-        //  - Hozzá kell adni a maradékot
-        //  - Az eredeti számot el kell osztani 10-zel
-
         int sign = x < 0 ? -1 : 1;
         int last_accumulated = std::numeric_limits<int>::max() / 10;
         int max_last_digit = std::numeric_limits<int>::max() % 10;
