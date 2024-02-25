@@ -1,25 +1,48 @@
 // https://leetcode.com/problems/valid-parentheses/
 
-#include <set>
-#include <map>
-#include <stack>
-
 class Solution 
 {
+private:
+    bool isOpening(char bracket)
+    {
+        switch (bracket)
+        {
+            case '(':
+            case '[':
+            case '{':
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    char opening(char closing)
+    {
+        switch (closing)
+        {
+            case ')':
+                return '(';
+            case ']':
+                return '[';
+            case '}':
+                return '{';
+            default:
+                return 0;
+        }
+    }
+
 public:
     bool isValid(std::string s) 
     {
-        std::set<char> opening_brackets = { '(', '[', '{' };
-        std::map<char, char> closing_brackets = { { ')', '('}, {']', '['}, {'}', '{'} };
         std::stack<char> openings;
         
         for (const char bracket : s)
         {
-            if (opening_brackets.contains(bracket))
+            if (isOpening(bracket))
             {
                 openings.push(bracket);
             }
-            else if (openings.empty() || openings.top() != closing_brackets[bracket])
+            else if (openings.empty() || openings.top() != opening(bracket))
             {
                 return false;
             }
